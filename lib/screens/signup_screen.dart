@@ -1,4 +1,5 @@
 import 'package:e_shop/constants.dart';
+import 'package:e_shop/services/auth.dart';
 import 'package:e_shop/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -39,18 +40,15 @@ class SignUpScreen extends StatelessWidget {
               children: [
                 CustomFormTextField(
                   label: "Name",
-                  icon: FontAwesomeIcons.solidUserCircle,
-                  isPassword: false,
+                  icon: FontAwesomeIcons.solidUserCircle
                 ),
                 CustomFormTextField(
                   label: "E-mail",
-                  icon: FontAwesomeIcons.solidEnvelope,
-                  isPassword: false,
+                  icon: FontAwesomeIcons.solidEnvelope
                 ),
                 CustomFormTextField(
                   label: "Password",
-                  icon: FontAwesomeIcons.lock,
-                  isPassword: true,
+                  icon: FontAwesomeIcons.lock
                 ),
               ],
             ),
@@ -62,7 +60,8 @@ class SignUpScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: width / 4),
             child: ElevatedButton(
                 onPressed: () {
-                _formKey.currentState!.validate();
+                //_formKey.currentState!.validate();
+
                 },
                 child: const Text('Signup'),
                 style: ButtonStyle(

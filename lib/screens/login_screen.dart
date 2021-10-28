@@ -40,13 +40,11 @@ class LoginScreen extends StatelessWidget {
             child: Column(children: [
             CustomFormTextField(
               label: "E-mail",
-              icon: FontAwesomeIcons.solidEnvelope,
-              isPassword: false,
+              icon: FontAwesomeIcons.solidEnvelope
             ),
             CustomFormTextField(
               label: "Password",
-              icon: FontAwesomeIcons.lock,
-              isPassword: true,
+              icon: FontAwesomeIcons.lock
             ),
           ],),
           ),
