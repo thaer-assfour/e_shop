@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "72166754521",
+    "project_id": "e-shop-cefef",
+    "storage_bucket": "e-shop-cefef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72166754521:android:adb353f15f705ca4ef96c8",
+        "android_client_info": {
+          "package_name": "com.example.e_shop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72166754521-l70uuonlshafj3dsija9rh2gc8je2jih.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_shop",
+            "certificate_hash": "099d49ed274d8db7c75c62a3a8ec588ab73be9d5"
+          }
+        },
+        {
+          "client_id": "72166754521-hfj1uhrm91fqqne0ube9sgm0ebfp9sj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCizFUi2sw539vvglVhYwKSYhnDIyqWGMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72166754521-hfj1uhrm91fqqne0ube9sgm0ebfp9sj7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
