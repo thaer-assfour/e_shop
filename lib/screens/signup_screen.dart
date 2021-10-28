@@ -1,13 +1,11 @@
 import 'package:e_shop/constants.dart';
-import 'package:e_shop/screens/signup_screen.dart';
 import 'package:e_shop/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class LoginScreen extends StatelessWidget {
-  static String id = 'LoginScreen';
+class SignUpScreen extends StatelessWidget {
+  static String id = 'SignUpScreen';
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -37,18 +35,25 @@ class LoginScreen extends StatelessWidget {
           ),
           Form(
             key: _formKey,
-            child: Column(children: [
-            CustomFormTextField(
-              label: "E-mail",
-              icon: FontAwesomeIcons.solidEnvelope,
-              isPassword: false,
+            child: Column(
+              children: [
+                CustomFormTextField(
+                  label: "Name",
+                  icon: FontAwesomeIcons.solidUserCircle,
+                  isPassword: false,
+                ),
+                CustomFormTextField(
+                  label: "E-mail",
+                  icon: FontAwesomeIcons.solidEnvelope,
+                  isPassword: false,
+                ),
+                CustomFormTextField(
+                  label: "Password",
+                  icon: FontAwesomeIcons.lock,
+                  isPassword: true,
+                ),
+              ],
             ),
-            CustomFormTextField(
-              label: "Password",
-              icon: FontAwesomeIcons.lock,
-              isPassword: true,
-            ),
-          ],),
           ),
           SizedBox(
             height: height / 100,
@@ -56,37 +61,18 @@ class LoginScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: width / 4),
             child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Login'),
+                onPressed: () {
+                _formKey.currentState!.validate();
+                },
+                child: const Text('Signup'),
                 style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(KFourthColor),
+                    MaterialStateProperty.all<Color>(KFourthColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
                             side: const BorderSide(color: KFifthColor))))),
           ),
-          SizedBox(
-            height: height / 100,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:  [
-              const Text(
-                'Don\'t have an account?',
-                style: TextStyle(color: KFourthColor),
-              ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.pushNamed(context, SignUpScreen.id);
-                },
-                child: const Text(
-                  ' SignUp',
-                  style: TextStyle(color: KFourthColor,fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          )
         ],
       ),
     );
