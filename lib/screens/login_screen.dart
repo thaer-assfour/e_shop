@@ -56,7 +56,9 @@ class LoginScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: width / 4),
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _formKey.currentState!.validate();
+                },
                 child: const Text('Login'),
                 style: ButtonStyle(
                     backgroundColor:
