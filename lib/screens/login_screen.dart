@@ -1,12 +1,18 @@
 import 'package:e_shop/constants.dart';
+import 'package:e_shop/screens/home_screen.dart';
 import 'package:e_shop/screens/signup_screen.dart';
+import 'package:e_shop/services/auth.dart';
 import 'package:e_shop/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatelessWidget {
   static String id = 'LoginScreen';
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final _auth = Auth();
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +43,20 @@ class LoginScreen extends StatelessWidget {
           ),
           Form(
             key: _formKey,
-            child: Column(children: [
-            CustomFormTextField(
-              label: "E-mail",
-              icon: FontAwesomeIcons.solidEnvelope
+            child: Column(
+              children: [
+                CustomFormTextField(
+                  label: "E-mail",
+                  icon: FontAwesomeIcons.solidEnvelope,
+                  controller: _emailController,
+                ),
+                CustomFormTextField(
+                  label: "Password",
+                  icon: FontAwesomeIcons.lock,
+                  controller: _passwordController,
+                ),
+              ],
             ),
-            CustomFormTextField(
-              label: "Password",
-              icon: FontAwesomeIcons.lock
-            ),
-          ],),
           ),
           SizedBox(
             height: height / 100,
@@ -54,8 +64,26 @@ class LoginScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: width / 4),
             child: ElevatedButton(
-                onPressed: () {
-                  _formKey.currentState!.validate();
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    await _auth
+                        .signInByEmail(
+                            _emailController.text, _passwordController.text)
+                        .then((value) {
+                      if (value == 'Success') {
+                        Navigator.pushNamed(context, HomeScreen.id);
+                      } else {
+                        Fluttertoast.showToast(
+                            msg: value,
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.SNACKBAR,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: KFourthColor,
+                            textColor: KSecondColor,
+                            fontSize: 16.0);
+                      }
+                    });
+                  }
                 },
                 child: const Text('Login'),
                 style: ButtonStyle(
@@ -71,18 +99,19 @@ class LoginScreen extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children:  [
+            children: [
               const Text(
                 'Don\'t have an account?',
                 style: TextStyle(color: KFourthColor),
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, SignUpScreen.id);
                 },
                 child: const Text(
                   ' SignUp',
-                  style: TextStyle(color: KFourthColor,fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: KFourthColor, fontWeight: FontWeight.bold),
                 ),
               ),
             ],

@@ -1,3 +1,4 @@
+import 'package:e_shop/screens/home_screen.dart';
 import 'package:e_shop/screens/login_screen.dart';
 import 'package:e_shop/screens/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
           SignUpScreen.id: (context) => SignUpScreen(),
+          HomeScreen.id: (context) => HomeScreen(),
         });
   }
 }

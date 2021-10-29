@@ -4,16 +4,17 @@ import 'package:e_shop/constants.dart';
 class CustomFormTextField extends StatelessWidget {
   late String label;
   late IconData icon;
-
+  TextEditingController controller;
 
   CustomFormTextField(
-      {required this.label, required this.icon});
+      {required this.label, required this.icon, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: TextFormField(
+        controller: controller,
         obscureText: (label == 'Password') ? true : false,
         cursorColor: KFourthColor,
         cursorHeight: 24,

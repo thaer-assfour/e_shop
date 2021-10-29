@@ -1,23 +1,31 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Auth {
+  Future signUpByEmail(
+      String email, String password) async {
+    try {
+      UserCredential? userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      return 'Success';
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    } catch (e) {
+      return "Unknown error";
+    }
+  }
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future signInByEmail(
+      String email, String password) async {
+    try {
+      UserCredential? userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      return 'Success';
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    } catch (e) {
+      return "Unknown error";
+    }
+  }
 
- Future<UserCredential> signUpByEmail(String email, String password) async{
-   late UserCredential userCredential;
-   try {
-     userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-         email: email, password: password);
-   } on FirebaseAuthException catch (e) {
-     if (e.code == 'weak-password') {
-       print('The password provided is too weak.');
-     } else if (e.code == 'email-already-in-use') {
-       print('The account already exists for that email.');
-     }
-   } catch (e) {
-     print(e);
-   }
-   return userCredential;
-}
+  signInByGoogle(String email, String password) async {}
 }
